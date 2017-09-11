@@ -97,8 +97,8 @@
             <li><a href="#">友情链接</a></li>
         </ul>
         <div class="foot">
-            <p><span>版权所有软件1001班
-			<a href="#" >陈文平</a><a href="#" > 胡剑彬</a><a href="#" >林清华</a><a href="#" >汤怡青</a><a href="#" >袁泽</a><a href="#" >周晓丽</a>
+            <p><span>版权所有软件1705班
+			<a href="#">李治龙</a><a href="#"> 陈伟峰</a><a href="#">张梦</a><a href="#">邢飞</a>
 			</span></p>
             <div class="sns">
                 <span>关注我们： </span><a href="#" class="login_sina">新浪微博 </a><a href="#" class="login_qq">腾讯微博</a>
