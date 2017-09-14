@@ -16,7 +16,8 @@
         <!--<property name="maxUploadSize" value="300000000"/>-->
     <!--</bean>-->
 
-
+    <import resource="spring-tx.xml"/>
+    <import resource="spring-redis.xml"/>
     <import resource="spring-mvc.xml"></import>
     <import resource="spring-datasource.xml"></import>
     <import resource="spring-mybatis.xml"></import>
