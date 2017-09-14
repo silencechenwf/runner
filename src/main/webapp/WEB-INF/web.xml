@@ -12,9 +12,22 @@
       <param-value>utf-8</param-value>
     </init-param>
   </filter>
+  <!--spring session过滤器-->
+  <filter>
+    <filter-name>springSessionRepositoryFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+
   <filter-mapping>
     <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>springSessionRepositoryFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+
+    <!--<dispatcher>REQUEST</dispatcher>-->
+    <!--<dispatcher>ERROR</dispatcher>-->
   </filter-mapping>
   <servlet>
     <servlet-name>spring-mvc</servlet-name>

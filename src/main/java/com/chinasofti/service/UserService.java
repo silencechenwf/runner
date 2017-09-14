@@ -6,16 +6,14 @@ import com.chinasofti.pojo.*;
 import com.chinasofti.pojo.Memory;
 import com.chinasofti.util.Page;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import com.chinasofti.pojo.Dynamic;
-
 import com.chinasofti.pojo.UserInfo;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -36,6 +34,7 @@ public class UserService {
     @Resource
     private Travel_partnerMapper travel_partnerMapper;
     //添加发布记忆
+    @Transactional
     public int memeroy_add(Memory memory) {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -43,6 +42,7 @@ public class UserService {
         memory.setTime(sf);
         memory.setCount(0);
         int i = memoryMapper.insert(memory);
+        int b=1/0;
         return i;
     }
 
@@ -52,6 +52,7 @@ public class UserService {
     }
 
     //删除某一个记忆
+    @Transactional
     public int deleteMemeroy(Integer memoryId) {
         return memoryMapper.deleteByPrimaryKey(memoryId);
     }

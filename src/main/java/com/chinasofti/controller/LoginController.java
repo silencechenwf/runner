@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/8/1.
@@ -91,8 +90,8 @@ public class LoginController {
     @ResponseBody
     public JSONResult checkUserName(String data) {
         JSONResult jsonResult = new JSONResult();
-        Register register = loginService.checkUserName(data);
-        if (register != null) {
+        List<Register> register = loginService.checkUserName(data);
+        if (register.size()>0) {
             jsonResult.setMsg("用户已存在");
             jsonResult.setSuccess(false);
         } else {

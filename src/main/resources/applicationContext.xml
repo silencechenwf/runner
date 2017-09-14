@@ -22,4 +22,5 @@
     <import resource="spring-datasource.xml"></import>
     <import resource="spring-mybatis.xml"></import>
     <import resource="spring-mail.xml"></import>
+    <import resource="spring-ehcache.xml"/>
 </beans>

@@ -3,15 +3,15 @@ package com.chinasofti.service;
 import com.chinasofti.dao.*;
 import com.chinasofti.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/8/1.
@@ -29,7 +29,7 @@ public class LoginService {
         int i = registerMapper.updateByPrimaryKeySelective(register);
         return i;
     }
-
+    @Transactional
     public String register(Register register) {
         register.setState(0);
         if (register.getEmail() != "" && register.getUserName() != "" && register.getUserPass() != "") {
@@ -37,7 +37,9 @@ public class LoginService {
             if (insert > 0) {
 //                //给个人信息表里面添加user_name
 //                userInfoMapper.insertUserNameToUserInfo(register.getUserName());
-                Register register1 = registerMapper.checkUserName(register.getUserName());
+                List<Register> registerList= registerMapper.checkUserName(register.getUserName());
+                if(registerList.size()>1)return "注册失败，用户名重复";
+                Register register1=registerList.get(0);
                 MimeMessage mimeMessage = mailSender.createMimeMessage();
                 MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "UTF-8");
                 String html = "<html><head><META http-equiv=Content-Type content='text/html; charset=UTF-8'><title>驴友网注册激活</title></head><body>欢迎使用，驴友网。<br/><a href='http://localhost:8082/login/email?registerId=" + register1.getRegisterId() + "' target='_blank'>激活链接</a><br>点击上面超链接 激活账户信息！</body><html>";
@@ -68,8 +70,8 @@ public class LoginService {
         return login;
     }
 
-    public Register checkUserName(String userName) {
-        Register register = registerMapper.checkUserName(userName);
+    public List<Register> checkUserName(String userName) {
+        List<Register> register = registerMapper.checkUserName(userName);
         return register;
     }
 

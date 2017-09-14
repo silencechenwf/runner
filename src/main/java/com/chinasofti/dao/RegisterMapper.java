@@ -2,6 +2,8 @@ package com.chinasofti.dao;
 
 import com.chinasofti.pojo.Register;
 
+import java.util.List;
+
 public interface RegisterMapper {
     int deleteByPrimaryKey(Integer registerId);
 
@@ -17,7 +19,7 @@ public interface RegisterMapper {
 
     Register loginByUserNameAndUserPass(Register register);
 
-    Register checkUserName(String userName);
+    List<Register> checkUserName(String userName);
 
     Register checkEmail(String email);
 }

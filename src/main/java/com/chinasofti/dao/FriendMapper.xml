@@ -6,6 +6,7 @@
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="friend" property="friend" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="VARCHAR"/>
   </resultMap>
   <sql id="Base_Column_List" >
     friend_id, user_name, friend, state
