@@ -68,6 +68,19 @@
       <artifactId>druid</artifactId>
       <version>1.0.18</version>
     </dependency>
+    <!-- session共享相关开始 -->
+    <dependency>
+      <groupId>org.springframework.session</groupId>
+      <artifactId>spring-session-data-redis</artifactId>
+      <version>1.2.1.RELEASE</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>biz.paluch.redis</groupId>
+      <artifactId>lettuce</artifactId>
+      <version>3.5.0.Final</version>
+    </dependency>
+    <!-- session共享相关结束 -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
@@ -102,6 +115,17 @@
   </dependencies>
   <build>
     <finalName>group5_runner</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
     <resources>
       <resource>
         <directory>src/main/resources</directory>
